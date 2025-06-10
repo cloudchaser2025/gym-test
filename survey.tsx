@@ -1,3 +1,8 @@
+const supabase = createClient(
+  'https://hnxbevfbjbpqdjxqnjso.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhueGJldmZiamJwcWRqeHFuanNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1OTc1OTcsImV4cCI6MjA2NTE3MzU5N30.YtJ4NNOvJ6yFXtvU8nbr8CKqJk0xtemQiwcuG00O2aI'
+)
+
 "use client"
 
 import type React from "react"
@@ -57,10 +62,36 @@ export default function Component() {
     }
   }
 
+
+  
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+  e.preventDefault()
+
+  const { error } = await supabase.from('survey_responses').insert([
+    {
+      training_level: formData.trainingLevel,
+      goals: formData.goals,
+      frequency: formData.frequency,
+      training_type: formData.trainingType,
+      current_member: formData.currentMember,
+      gym_preferences: formData.gymPreferences,
+      location: formData.location,
+      interests: formData.interests,
+      membership: formData.membership,
+      first_name: formData.firstName,
+      email: formData.email,
+      phone: formData.phone,
+    }
+  ])
+
+  if (error) {
+    alert("Submission failed. Please try again.")
+    console.error(error)
+  } else {
     setSubmitted(true)
+    alert("Thanks! Your response has been recorded.")
   }
+}
 
   if (submitted) {
     return (
