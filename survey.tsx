@@ -1,9 +1,10 @@
+"use client"
+
 const supabase = createClient(
   'https://hnxbevfbjbpqdjxqnjso.supabase.co',
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImhueGJldmZiamJwcWRqeHFuanNvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk1OTc1OTcsImV4cCI6MjA2NTE3MzU5N30.YtJ4NNOvJ6yFXtvU8nbr8CKqJk0xtemQiwcuG00O2aI'
 )
 
-"use client"
 
 import type React from "react"
 
